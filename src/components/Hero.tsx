@@ -30,34 +30,34 @@ export default function Hero() {
 
       {/* Hero Foreground Content Overlaid Above the Linear Dissolve */}
       <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-14">
-        <div className="max-w-xl lg:max-w-[48%] space-y-4 sm:space-y-5">
+        <div className="max-w-2xl lg:max-w-[80%] space-y-3 sm:space-y-4">
           
-          {/* Main Display Title styled to fit easily on two lines, less bold and more balanced */}
-          <h1 className="font-sans text-2xl sm:text-3xl lg:text-[2.25rem] leading-[1.2] tracking-tight text-[#1a2521]">
+          {/* Main Display Title styled to fit elegantly on a single line */}
+          <h1 className="font-sans text-xl sm:text-2xl lg:text-[1.65rem] xl:text-[1.95rem] leading-[1.3] tracking-tight">
             <motion.span
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="block font-semibold text-[#2E536B]"
+              className="font-semibold text-[#2E536B] mr-2 inline"
             >
               Accelerating Social Mobility
             </motion.span>
             <motion.span
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="block font-normal text-[#3AB03A] mt-1"
+              transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="font-normal text-[#3AB03A] inline"
             >
               through Place-Based Change
             </motion.span>
           </h1>
 
-          {/* Subtitle is less bold (font-normal instead of font-medium/bold) to balance focal weight */}
+          {/* Subtitle is less bold to balance focal weight */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.35 }}
-            className="text-[#2E536B] font-sans text-lg sm:text-xl font-normal tracking-wide mt-2"
+            transition={{ duration: 0.8, delay: 0.25 }}
+            className="text-[#2E536B] font-sans text-lg sm:text-xl font-normal tracking-wide"
           >
             Leeds and West Yorkshire
           </motion.div>
