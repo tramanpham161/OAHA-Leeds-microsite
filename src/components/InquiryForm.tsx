@@ -249,9 +249,6 @@ export default function InquiryForm() {
                       <span>{submitting ? 'Sending...' : 'Join us'}</span>
                       <Send className={`w-3.5 h-3.5 text-[#FF9900] ${submitting ? 'animate-pulse' : ''}`} />
                     </button>
-                    <p className="text-center text-[10px] font-mono uppercase tracking-wider text-[#969696] font-bold mt-3">
-                      All inquiries are sent to nina.slingsby@oaha.uk
-                    </p>
                   </div>
                 </motion.form>
               ) : (
