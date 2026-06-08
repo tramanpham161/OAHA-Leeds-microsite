@@ -7,9 +7,9 @@ export default function Hero() {
     <section id="banner-section" className="relative min-h-[360px] lg:min-h-[460px] flex items-center bg-[#faf9f6] overflow-hidden py-8 sm:py-12">
       {/* 
         This is the underlying Leeds 2 Scenic Photo Layer positioned on the right half of the banner.
-        It has been fitted with object-cover and matches the original design.
+        It has been fitted with object-cover and matches the original design, staying on the right half on mobile.
       */}
-      <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[53%] h-full z-0 select-none pointer-events-none flex items-center justify-end pr-0">
+      <div className="absolute right-0 top-0 bottom-0 w-[45%] xs:w-[50%] sm:w-[53%] h-full z-0 select-none pointer-events-none flex items-center justify-end pr-0">
         <div className="h-full relative w-full">
           <motion.img
             initial={{ opacity: 0, scale: 1.06 }}
@@ -33,15 +33,15 @@ export default function Hero() {
 
       {/* Hero Foreground Content Overlaid Above the Linear Dissolve */}
       <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl lg:max-w-[75%] space-y-3 sm:space-y-4 text-left font-bold">
+        <div className="max-w-[260px] xs:max-w-[320px] sm:max-w-xl md:max-w-2xl lg:max-w-[75%] space-y-3 sm:space-y-4 text-left font-bold">
           
-          {/* Main Display Title styled to fit elegantly without animations */}
+          {/* Main Display Title styled to fit elegantly without animations, split into two blocks on mobile */}
           <h1 className="font-sans text-xl sm:text-2xl lg:text-[1.6rem] xl:text-[1.85rem] leading-[1.35] tracking-tight text-left font-bold">
-            <span className="inline-block">
+            <span className="block md:inline-block">
               <span className="text-[#2E536B]">Accelerating </span>
               <span className="text-[#3AB03A]">Social Mobility </span>
             </span>
-            <span className="inline-block sm:ml-2">
+            <span className="block md:inline-block md:ml-1.5">
               <span className="text-[#2E536B]">through </span>
               <span className="text-[#FF9900]">Place-Based Change</span>
             </span>
