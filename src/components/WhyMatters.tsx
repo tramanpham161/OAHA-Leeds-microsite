@@ -64,7 +64,7 @@ export default function WhyMatters() {
             Young people do not experience opportunity through one organisation, one programme or one moment in time. Their journeys are shaped by family, school, community, confidence, networks, place, employers, role models and access to information.
           </p>
           <p className="font-normal text-[#51615a]">
-            Across Leeds, Bradford, Sheffield and the wider region, there is significant activity already taking place. But without a shared view of the ecosystem, it can be difficult to see:
+            There is significant activity already taking place. But without a shared view of the ecosystem, it can be difficult to see:
           </p>
         </div>
 
