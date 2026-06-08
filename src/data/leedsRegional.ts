@@ -16,7 +16,7 @@ export const LEEDS_HERO = {
   title: "Accelerating Social Mobility through Place-Based Change",
   region: "Leeds and West Yorkshire",
   paragraphs: [
-    "Leeds and the wider West Yorkshire region are places of ambition, enterprise, civic energy and growth. Across Leeds, Bradford, Sheffield and neighbouring areas, there are already businesses, charities, schools, colleges, universities, funders, civic leaders and community organisations working hard to improve opportunity for young people.",
+    "Yorkshire is a place of ambition, enterprise, civic energy and growth. Across Leeds, Bradford, Sheffield and neighbouring areas, there are already businesses, charities, schools, colleges, universities, funders, civic leaders and community organisations working hard to improve opportunity for young people.",
     "But the challenge is that this work is not always visible, connected or easy to navigate.",
     "This project is about bringing ecosystem players together to understand what is already happening, where there are gaps or missed connections, and what else needs to happen to ensure young people can see, access and move towards opportunity.",
     "This is not about duplication.",
@@ -29,7 +29,7 @@ export const LEEDS_WHY_MATTERS: SectionWithBullets = {
   title: "Why this work matters",
   paragraphs: [
     "Young people do not experience opportunity through one organisation, one programme or one moment in time. Their journeys are shaped by family, school, community, confidence, networks, place, employers, role models and access to information.",
-    "Across Leeds, Bradford, Sheffield and the wider region, there is significant activity already taking place. But without a shared view of the ecosystem, it can be difficult to see:"
+    "There is significant activity already taking place. But without a shared view of the ecosystem, it can be difficult to see:"
   ],
   bullets: [
     "what support already exists",
@@ -121,7 +121,7 @@ export const LEEDS_ROLE = {
   paragraphs: [
     "Leeds provides a strong starting point for this work. It has a major employer base, strong civic leadership, significant education and skills assets, and a growing network of organisations focused on social mobility, inclusion and opportunity.",
     "But young people’s lives, communities and future pathways do not stop at city boundaries.",
-    "That is why this project will also look across West Yorkshire and connected regional economies, including Bradford, Sheffield and other neighbouring places, to understand how opportunity flows across the wider ecosystem.",
+    "That is why this project will also look across South and West Yorkshire and connected regional economies, including Bradford, Sheffield and other neighbouring places, to understand how opportunity flows across the wider ecosystem.",
     "The ambition is to build something rooted in place, but connected across the region."
   ]
 };
