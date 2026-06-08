@@ -12,7 +12,7 @@ export default function Introduction() {
           <div className="lg:col-span-7 space-y-3.5 text-[#51615a] text-sm sm:text-base leading-relaxed">
             
             <p className="font-normal text-[#51615a]">
-              Leeds and the wider West Yorkshire region are places of ambition, enterprise, civic energy and growth. 
+              Yorkshire is a place of ambition, enterprise, civic energy and growth. 
               Across Leeds, Bradford, Sheffield and neighbouring areas, there are already businesses, charities, schools, 
               colleges, universities, funders, civic leaders and community organisations working hard to improve opportunity 
               for young people.
