@@ -49,7 +49,7 @@ export default function Hero() {
 
           {/* Subtitle positioned below the main heading without animations */}
           <div className="text-[#2E536B] font-sans text-lg sm:text-xl font-normal tracking-wide text-left">
-            Leeds and West Yorkshire
+            West & South Yorkshire
           </div>
 
         </div>
