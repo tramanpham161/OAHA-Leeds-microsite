@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { LEEDS_BE_PART } from '../data/leedsRegional';
-import { Send, CheckCircle2, CircleAlert, Sparkles, HelpCircle, ArrowRight, Target, Copy, Mail, Check } from 'lucide-react';
+import { Send, CheckCircle2, CircleAlert, Sparkles, HelpCircle, ArrowRight, Target } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function InquiryForm() {
@@ -15,8 +15,6 @@ export default function InquiryForm() {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [submitting, setSubmitting] = useState(false);
-  const [copiedEmail, setCopiedEmail] = useState(false);
-  const [copiedContent, setCopiedContent] = useState(false);
 
   // Helper to build prefilled mailto URL
   const getMailtoUrl = () => {
@@ -33,31 +31,6 @@ export default function InquiryForm() {
       `${formData.name}`
     );
     return `mailto:nina.slingsby@oaha.uk?subject=${subject}&body=${body}`;
-  };
-
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText('nina.slingsby@oaha.uk');
-    setCopiedEmail(true);
-    setTimeout(() => setCopiedEmail(false), 2000);
-  };
-
-  const handleCopyContent = () => {
-    const content = 
-      `Subject: OAHA Inquiry from ${formData.name}\n` +
-      `To: nina.slingsby@oaha.uk\n\n` +
-      `Hi Nina,\n\n` +
-      `Here is a new inquiry from the OAHA West & South Yorkshire website:\n\n` +
-      `Name: ${formData.name}\n` +
-      `Email: ${formData.email}\n` +
-      `Organisation/School: ${formData.org || 'N/A'}\n` +
-      `Category: ${formData.role.toUpperCase()}\n\n` +
-      `Message:\n${formData.message}\n\n` +
-      `Best regards,\n` +
-      `${formData.name}`;
-      
-    navigator.clipboard.writeText(content);
-    setCopiedContent(true);
-    setTimeout(() => setCopiedContent(false), 2000);
   };
 
   // Submit tracking validation
@@ -303,68 +276,21 @@ export default function InquiryForm() {
                   key="success"
                   initial={{ opacity: 0, scale: 0.98 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="text-center py-6 space-y-6"
+                  className="text-center py-10 space-y-5"
                 >
-                  <div className="w-14 h-14 bg-[#3AB03A]/10 border border-[#3AB03A]/20 rounded-full flex items-center justify-center text-[#3AB03A] mx-auto">
-                    <CheckCircle2 className="w-7 h-7" />
+                  <div className="w-16 h-16 bg-[#3AB03A]/10 border border-[#3AB03A]/20 rounded-full flex items-center justify-center text-[#3AB03A] mx-auto">
+                    <CheckCircle2 className="w-8 h-8" />
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     <h3 className="font-display font-semibold text-2xl text-[#2E536B]">
-                      Inquiry Prepared
+                      Thank You
                     </h3>
-                    <p className="font-sans text-xs sm:text-sm text-[#51615a] leading-relaxed max-w-sm sm:max-w-md mx-auto">
-                      Thank you, <span className="font-semibold text-[#2E536B]">{formData.name}</span>! We have opened your native email client to send this draft directly to <span className="font-semibold text-[#2E536B]">nina.slingsby@oaha.uk</span>.
+                    <p className="font-sans text-sm text-[#51615a] leading-relaxed max-w-sm sm:max-w-md mx-auto">
+                      We have received your email and will contact you soon.
                     </p>
                   </div>
 
-                  {/* Elegant Utility Options */}
-                  <div className="bg-white border border-[#969696]/20 p-4 rounded-2xl max-w-md mx-auto space-y-3.5 text-left font-sans">
-                    <p className="text-[10px] text-[#51615a] uppercase font-bold tracking-wider text-center border-b border-stone-100 pb-1.5">
-                      Need to send manually?
-                    </p>
-
-                    {/* Launch Email App Button */}
-                    <a
-                      href={getMailtoUrl()}
-                      className="w-full bg-[#2E536B] hover:bg-[#1B3B54] text-white font-mono tracking-wider uppercase text-[10.5px] font-bold py-3 rounded-lg shadow-xs hover:shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
-                    >
-                      <Mail className="w-3.5 h-3.5 text-[#FF9900]" />
-                      <span>Launch Email App Again</span>
-                    </a>
-
-                    {/* Copy Recipient Email */}
-                    <div className="flex items-center justify-between gap-2 bg-[#faf9f6] p-2.5 rounded-lg border border-[#e1e1db]/80">
-                      <div className="truncate">
-                        <span className="block text-[8px] uppercase font-mono tracking-wider text-stone-400 font-bold">To Recipient</span>
-                        <span className="text-xs font-mono font-medium text-[#2E536B] truncate">nina.slingsby@oaha.uk</span>
-                      </div>
-                      <button
-                        type="button"
-                        onClick={handleCopyEmail}
-                        className="flex-shrink-0 p-2 bg-white border border-stone-200 hover:border-[#3AB03A] rounded-md transition-all text-stone-600 hover:text-[#3AB03A] cursor-pointer"
-                        title="Copy Email Address"
-                      >
-                        {copiedEmail ? <Check className="w-3.5 h-3.5 text-[#3AB03A]" /> : <Copy className="w-3.5 h-3.5" />}
-                      </button>
-                    </div>
-
-                    {/* Copy Formatted Email Content */}
-                    <button
-                      type="button"
-                      onClick={handleCopyContent}
-                      className="w-full flex items-center justify-between gap-2 p-2.5 bg-stone-50 border border-stone-200 hover:border-[#3AB03A] rounded-lg transition-all text-left group cursor-pointer"
-                    >
-                      <div className="truncate">
-                        <span className="block text-[8px] uppercase font-mono tracking-wider text-stone-400 font-bold">Copy Email Template</span>
-                        <span className="text-[11px] text-[#51615a] block truncate">Subject, To, & Draft Message</span>
-                      </div>
-                      <div className="flex-shrink-0 p-1.5 bg-white border border-stone-200 rounded-md group-hover:border-[#3AB03A] transition-all">
-                        {copiedContent ? <Check className="w-3.5 h-3.5 text-[#3AB03A]" /> : <Copy className="w-3.5 h-3.5 text-stone-500" />}
-                      </div>
-                    </button>
-                  </div>
-
-                  <div className="pt-2 flex justify-center">
+                  <div className="pt-4 flex justify-center">
                     <button
                       onClick={handleReset}
                       className="px-5 py-2.5 bg-[#1a2521] text-[#faf9f6]/95 text-xs font-semibold tracking-wide uppercase rounded-xl shadow-xs hover:shadow-md transition-all cursor-pointer font-mono"
