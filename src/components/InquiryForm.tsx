@@ -20,7 +20,7 @@ export default function InquiryForm() {
   const getMailtoUrl = () => {
     const subject = encodeURIComponent(`OAHA Inquiry from ${formData.name}`);
     const body = encodeURIComponent(
-      `Hi Nina,\n\n` +
+      `Hi,\n\n` +
       `Here is a new inquiry from the OAHA West & South Yorkshire website:\n\n` +
       `Name: ${formData.name}\n` +
       `Email: ${formData.email}\n` +
@@ -30,7 +30,7 @@ export default function InquiryForm() {
       `Best regards,\n` +
       `${formData.name}`
     );
-    return `mailto:nina.slingsby@oaha.uk?subject=${subject}&body=${body}`;
+    return `mailto:tramanh.pham161@gmail.com?subject=${subject}&body=${body}`;
   };
 
   // Submit tracking validation
