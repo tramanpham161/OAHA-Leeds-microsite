@@ -52,14 +52,19 @@ export default function InquiryForm() {
     }
 
     setSubmitting(true);
-    // Mimic API delay then launch native email composer
+    
+    // Trigger the email composer synchronously in the user gesture context to avoid iframe blocks
+    try {
+      window.location.href = getMailtoUrl();
+    } catch (err) {
+      console.error('Failed to trigger mail client:', err);
+    }
+
+    // Mimic API delay then transition to the simple thank you state
     setTimeout(() => {
       setSubmitting(false);
       setHasSubmitted(true);
-      
-      // Attempt to automatically redirect browser to trigger user's native email client composer
-      window.location.href = getMailtoUrl();
-    }, 1000);
+    }, 800);
   };
 
   const handleReset = () => {
@@ -207,7 +212,7 @@ export default function InquiryForm() {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="e.g. nina.slingsby@oaha.uk"
+                      placeholder="e.g. yourname@domain.com"
                       className="w-full px-4 py-3 bg-white border border-[#969696]/20 rounded-lg text-sm text-[#2E536B] focus:border-[#2E536B]/50 focus:ring-1 focus:ring-[#2E536B]/50 outline-none transition-all placeholder:text-[#969696]/60"
                     />
                   </div>
