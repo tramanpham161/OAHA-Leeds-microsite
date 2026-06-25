@@ -26,7 +26,7 @@ async function startServer() {
       console.log(`Message: ${message}`);
 
       // Recipient specified by the user (can be overridden via environment variable)
-      const recipient = process.env.RECIPIENT_EMAIL || "tramanh.pham161@gmail.com";
+      const recipient = process.env.RECIPIENT_EMAIL || "tc68aec@gmail.com";
 
       // Build transport
       let transporter;
@@ -75,7 +75,7 @@ async function startServer() {
 
       const mailOptions = {
         from: `"${name}" <${senderEmail}>`, // Sent from a verified domain to satisfy SMTP requirements
-        to: recipient, // Sent to tramanh.pham161@gmail.com
+        to: recipient, // Sent to tc68aec@gmail.com
         replyTo: email, // Clicking "Reply" in your email client will reply to the visitor's email
         subject: `OAHA Website Inquiry from ${name}`,
         text: `Hi,\n\nHere is a new inquiry from the OAHA West & South Yorkshire website:\n\nName: ${name}\nEmail: ${email}\nOrganisation/School: ${org || "N/A"}\nCategory: ${role?.toUpperCase()}\n\nMessage:\n${message}\n\nBest regards,\n${name}`,
@@ -127,9 +127,11 @@ async function startServer() {
         smtpConfigured: isSmtpConfigured,
         previewUrl: testUrl,
       });
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error processing inquiry / sending email:", error);
-      return res.status(500).json({ error: "Failed to send email. Please try again." });
+      return res.status(500).json({
+        error: error.message || "Failed to send email. Please try again."
+      });
     }
   });
 
