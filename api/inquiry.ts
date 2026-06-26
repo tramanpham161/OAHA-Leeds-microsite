@@ -27,46 +27,29 @@ export default async function handler(req: any, res: any) {
       return res.status(400).json({ error: "Missing required fields" });
     }
 
-    // Default recipient is nina.slingsby@oaha.uk (overridable in Vercel environment variables)
-    const recipient = process.env.RECIPIENT_EMAIL || "nina.slingsby@oaha.uk";
+    // Default recipient is info.oaha.uk@gmail.com (overridable in Vercel environment variables)
+    const recipient = process.env.RECIPIENT_EMAIL || "info.oaha.uk@gmail.com";
 
     // Build SMTP transporter
     let transporter;
-    const isSmtpConfigured = !!(
-      process.env.SMTP_HOST &&
-      process.env.SMTP_PORT &&
-      process.env.SMTP_USER &&
-      process.env.SMTP_PASS
-    );
+    const smtpHost = process.env.SMTP_HOST || "smtp.resend.com";
+    const smtpPort = parseInt(process.env.SMTP_PORT || "587");
+    const smtpUser = process.env.SMTP_USER || "resend";
+    const smtpPass = process.env.SMTP_PASS || "re_EqeA4eNK_LKJ5iA4AxtPGdzprEYR7KRTu";
+    const smtpSecure = process.env.SMTP_SECURE === "true";
 
-    if (isSmtpConfigured) {
-      transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: parseInt(process.env.SMTP_PORT || "587"),
-        secure: process.env.SMTP_SECURE === "true",
-        auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS,
-        },
-      });
-    } else {
-      // Fallback test account on Ethereal if no SMTP credentials are provided
-      console.log("SMTP not configured in env. Creating a free test account on Ethereal...");
-      try {
-        const testAccount = await nodemailer.createTestAccount();
-        transporter = nodemailer.createTransport({
-          host: "smtp.ethereal.email",
-          port: 587,
-          secure: false,
-          auth: {
-            user: testAccount.user,
-            pass: testAccount.pass,
-          },
-        });
-      } catch (err) {
-        console.error("Failed to create Ethereal test account on Vercel. Falling back to log-only mode.", err);
-      }
-    }
+    // We consider SMTP configured since we have a robust default fallback to Resend
+    const isSmtpConfigured = true;
+
+    transporter = nodemailer.createTransport({
+      host: smtpHost,
+      port: smtpPort,
+      secure: smtpSecure,
+      auth: {
+        user: smtpUser,
+        pass: smtpPass,
+      },
+    });
 
     const senderEmail = process.env.SENDER_EMAIL || "onboarding@resend.dev";
 
