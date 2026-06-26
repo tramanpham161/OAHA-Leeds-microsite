@@ -15,6 +15,8 @@ export default function InquiryForm() {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [smtpConfigured, setSmtpConfigured] = useState(true);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
   // Submit tracking validation
   const handleSubmit = async (e: React.FormEvent) => {
@@ -50,6 +52,9 @@ export default function InquiryForm() {
         throw new Error(errorData.error || 'Failed to submit inquiry.');
       }
 
+      const data = await response.json().catch(() => ({}));
+      setSmtpConfigured(data.smtpConfigured !== false);
+      setPreviewUrl(data.previewUrl || null);
       setHasSubmitted(true);
     } catch (err: any) {
       console.error('Submission error:', err);
@@ -67,6 +72,8 @@ export default function InquiryForm() {
       role: 'employer',
       message: ''
     });
+    setSmtpConfigured(true);
+    setPreviewUrl(null);
     setHasSubmitted(false);
   };
 
@@ -286,6 +293,36 @@ export default function InquiryForm() {
                       We have received your email and will contact you soon.
                     </p>
                   </div>
+
+                  {!smtpConfigured && (
+                    <div className="max-w-md mx-auto mt-6 p-5 bg-[#FF9900]/10 border border-[#FF9900]/20 rounded-2xl text-left space-y-3 shadow-3xs">
+                      <div className="flex items-start gap-3">
+                        <Sparkles className="w-5 h-5 text-[#FF9900] shrink-0 mt-0.5" />
+                        <div>
+                          <h4 className="text-xs font-bold uppercase tracking-wider text-[#FF9900] font-mono">
+                            Developer Email Preview
+                          </h4>
+                          <p className="text-xs text-[#51615a] mt-1 leading-relaxed">
+                            Because SMTP environment variables are not configured in your deployment settings yet, live email transmission was simulated. You can view the full sent email in the mock sandbox:
+                          </p>
+                        </div>
+                      </div>
+                      
+                      {previewUrl && (
+                        <div className="pt-1.5 flex justify-end">
+                          <a
+                            href={previewUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#FF9900] hover:bg-[#E08500] text-white text-[10.5px] font-mono uppercase tracking-wider font-bold rounded-lg transition-all shadow-3xs cursor-pointer"
+                          >
+                            <span>Open Ethereal Mail Sandbox</span>
+                            <ArrowRight className="w-3.5 h-3.5" />
+                          </a>
+                        </div>
+                      )}
+                    </div>
+                  )}
 
                   <div className="pt-4 flex justify-center">
                     <button
