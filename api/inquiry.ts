@@ -27,8 +27,8 @@ export default async function handler(req: any, res: any) {
       return res.status(400).json({ error: "Missing required fields" });
     }
 
-    // Default recipient is tc68aec@gmail.com (overridable in Vercel environment variables)
-    const recipient = process.env.RECIPIENT_EMAIL || "tc68aec@gmail.com";
+    // Default recipient is nina.slingsby@oaha.uk (overridable in Vercel environment variables)
+    const recipient = process.env.RECIPIENT_EMAIL || "nina.slingsby@oaha.uk";
 
     // Build SMTP transporter
     let transporter;
