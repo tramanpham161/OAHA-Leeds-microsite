@@ -36,7 +36,10 @@ export default async function handler(req: any, res: any) {
     const smtpPort = parseInt(process.env.SMTP_PORT || "587");
     const smtpUser = process.env.SMTP_USER || "resend";
     const smtpPass = process.env.SMTP_PASS || "re_EqeA4eNK_LKJ5iA4AxtPGdzprEYR7KRTu";
-    const smtpSecure = process.env.SMTP_SECURE === "true";
+    
+    // Port 465 is implicit TLS/SSL (secure: true)
+    // Port 587 uses STARTTLS (secure: false)
+    const smtpSecure = smtpPort === 465;
 
     // We consider SMTP configured since we have a robust default fallback to Resend
     const isSmtpConfigured = true;
